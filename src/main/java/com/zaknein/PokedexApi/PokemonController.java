@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -38,7 +38,12 @@ public class PokemonController{
 
     @PutMapping("/pokemon/{id}")
     public Pokemon updatePokemon(@PathVariable int id, @RequestBody PokemonCreater pokemonCreater ){
+        /* UPGRADE POKEMON */
+    }
 
+    @DeleteMapping("/pokemon/{id}")
+    public Pokemon deletePokemon(@PathVariable int id){
+        /*KILL POKEMON */
     }
 
 
