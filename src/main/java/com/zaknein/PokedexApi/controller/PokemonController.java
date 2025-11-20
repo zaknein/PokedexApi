@@ -37,7 +37,7 @@ public class PokemonController{
 
     @GetMapping("/pokemon/id}")
     public String getPokemonById(@PathVariable int id){
-        /* GET POKEMON BY ID */
+        return pokeService.pokeById(id);
     }
     
     @PostMapping("/pokemon")
