@@ -31,6 +31,10 @@ public class PokemonService{
         return  return new ArrayList(pokemonMap.values());
     }
 
+    @Override
+    public Pokemon pokeById(int id){
+        return pokemonMap.get(id);
+    }
 
 
 
