@@ -1,4 +1,4 @@
-package com.zaknein.PokedexApi;
+package com.zaknein.PokedexApi.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,13 +9,19 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import org.springframework.web.bind.annotation.Autowired;
 
 
 
 @RestController
 @CrossOrigin
 public class PokemonController{
+
+    @Autowired
+    public PokemonController(PokemonService pokeService){
+        this.pokeService = pokeService;
+    }
+
 
     @GetMapping("/health-check")
     public String getHealthCheck(){
@@ -24,8 +30,9 @@ public class PokemonController{
 
 
     @GetMapping("/pokemon")
-    public String getPokemon(){
-        /* GET POKEMON */
+    public List<Pokemon> getPokemon(){
+        return pokeService.getThemAll();
+
     }
 
     @GetMapping("/pokemon/id}")
