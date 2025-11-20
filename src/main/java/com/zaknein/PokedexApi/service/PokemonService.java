@@ -22,9 +22,14 @@ public class PokemonService{
          pokemonC.getWeight, pokemonC.getDescription, pokemonC.getCreatedAt, pokemonC.getTypes)
 
         pokemonMap.put(pokemonId, newPoke);
-
+        return null;
+    
     }
 
+    @Override
+    public List<Pokemon> getThemAll(){
+        return  return new ArrayList(pokemonMap.values());
+    }
 
 
 
