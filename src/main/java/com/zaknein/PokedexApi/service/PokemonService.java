@@ -2,7 +2,14 @@ package com.zaknein.PokedexApi.service;
 
 
 import org.springframework.stereotype.Service;
+
+import com.zaknein.PokedexApi.domain.Pokemon;
+import com.zaknein.PokedexApi.domain.PokemonCreater;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 
@@ -13,25 +20,22 @@ public class PokemonService{
 
     private int futurePokeId = 1;
 
-    @Override
     public Pokemon createPokemon(PokemonCreater pokemonC ){
 
-        int pokemonId = futurePkmnId++;
+        int pokemonId = futurePokeId++;
 
-        Pokemon newPoke = new Pokemon(pokemonId, PokemonC.getName, PokemonC.getSpecies, pokemonC.getHeight,
-         pokemonC.getWeight, pokemonC.getDescription, pokemonC.getCreatedAt, pokemonC.getTypes)
+        Pokemon newPoke = new Pokemon(pokemonId, pokemonC.getName(), pokemonC.getSpecies(), pokemonC.getHeight(),
+         pokemonC.getWeight(), pokemonC.getDescription(), pokemonC.getCreatedAt(), pokemonC.getTypes());
 
         pokemonMap.put(pokemonId, newPoke);
         return null;
     
     }
 
-    @Override
     public List<Pokemon> getThemAll(){
-        return  return new ArrayList(pokemonMap.values());
+        return new ArrayList(pokemonMap.values());
     }
 
-    @Override
     public Pokemon pokeById(int id){
         return pokemonMap.get(id);
     }

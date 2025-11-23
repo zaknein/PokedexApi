@@ -1,4 +1,4 @@
-package com.zaknein.PokedexApi;
+package com.zaknein.PokedexApi.domain;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
