@@ -18,12 +18,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import java.util.List;
 
 
-
-
-
-
-
-
 @RestController
 @CrossOrigin
 public class PokemonController{
@@ -63,10 +57,10 @@ public class PokemonController{
     //     /* UPGRADE POKEMON */
     // }
 
-    // @DeleteMapping("/pokemon/{id}")
-    // public Pokemon deletePokemon(@PathVariable int id){
-    //     /*KILL POKEMON */
-    // }
+    @DeleteMapping("/pokemon/{id}")
+    public Pokemon deletePokemon(@PathVariable int id){
+        return pokeService.deletePokeById(id);
+    }
 
 
 

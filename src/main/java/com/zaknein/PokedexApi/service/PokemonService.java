@@ -40,7 +40,9 @@ public class PokemonService{
         return pokemonMap.get(id);
     }
 
-
+    public void deletePokeById(int id){
+        pokemonMap.remove(id);
+    }
 
 
 
