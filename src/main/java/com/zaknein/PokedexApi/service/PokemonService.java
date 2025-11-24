@@ -44,7 +44,19 @@ public class PokemonService{
         pokemonMap.remove(id);
     }
 
+    public Pokemon updatePokemon(int id, PokemonCreater pokemonCreater){
+        Pokemon oldPoke = pokemonMap.get(id);
 
+        oldPoke.setName(pokemonCreater.getName());
+        oldPoke.setDescription(pokemonCreater.getDescription());
+        oldPoke.setSpecies(pokemonCreater.getSpecies());
+        oldPoke.setHeight(pokemonCreater.getHeight());
+        oldPoke.setWeight(pokemonCreater.getWeight());
+        oldPoke.setTypes(pokemonCreater.getTypes());
+
+        return oldPoke;
+
+    }
 
 
 

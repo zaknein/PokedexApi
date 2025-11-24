@@ -52,10 +52,11 @@ public class PokemonController{
         return pokeService.createPokemon(pokemonCreater);
     }
 
-    // @PutMapping("/pokemon/{id}")
-    // public Pokemon updatePokemon(@PathVariable int id, @RequestBody PokemonCreater pokemonCreater ){
-    //     /* UPGRADE POKEMON */
-    // }
+    @PutMapping("/pokemon/{id}")
+    public Pokemon updatePokemon(@PathVariable int id, @RequestBody PokemonCreater pokemonCreater ){
+        Pokemon updated = pokeService.updatePokemon(id, pokemonCreater);
+        return updated;
+    }
 
     @DeleteMapping("/pokemon/{id}")
     public Pokemon deletePokemon(@PathVariable int id){
