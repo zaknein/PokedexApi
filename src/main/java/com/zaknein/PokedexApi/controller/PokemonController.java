@@ -59,8 +59,8 @@ public class PokemonController{
     }
 
     @DeleteMapping("/pokemon/{id}")
-    public Pokemon deletePokemon(@PathVariable int id){
-        return pokeService.deletePokeById(id);
+    public void deletePokemon(@PathVariable int id){
+        pokeService.deletePokeById(id);
     }
 
 
