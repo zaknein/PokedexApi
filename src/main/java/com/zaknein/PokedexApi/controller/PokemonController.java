@@ -22,10 +22,10 @@ import java.util.List;
 @CrossOrigin
 public class PokemonController{
 
-    private final PokemonService pokeService;
+    private final PokemonService pokeService = new PokemonServiceImpl();
 
     @Autowired
-    public PokemonController(PokemonService pokeService){
+    public PokemonController(PokemonServiceImpl pokeService){
         this.pokeService = pokeService;
     }
 
