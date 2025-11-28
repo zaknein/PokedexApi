@@ -32,7 +32,7 @@ public class PokemonServiceImpl implements PokemonService {
          pokemonC.getWeight(), pokemonC.getDescription(), pokemonC.getCreatedAt(), pokemonC.getTypes());
 
         pokemonMap.put(pokemonId, newPoke);
-        return null;
+        return newPoke;
     
     }
 

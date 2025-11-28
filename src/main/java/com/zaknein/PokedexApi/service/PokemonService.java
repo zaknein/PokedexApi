@@ -1,23 +1,20 @@
 package com.zaknein.PokedexApi.service;
 
+import java.util.List;
 
+import com.zaknein.PokedexApi.domain.Pokemon;
+import com.zaknein.PokedexApi.domain.PokemonCreater;
 
 public interface PokemonService {
 
     
-    private Pokemon createPokemon(PokemonCreater pokemonC ){   
-    }
+    Pokemon createPokemon(PokemonCreater pokemonC );
 
-    private List<Pokemon> getThemAll(){
-    }
+    List<Pokemon> getThemAll();
 
-    private Pokemon pokeById(int id){
-    }
+    Pokemon pokeById(int id);
 
-    private void deletePokeById(int id){
-    }
+    void deletePokeById(int id);
 
-    private Pokemon updatePokemon(int id, PokemonCreater pokemonCreater){
-    }
-
+    Pokemon updatePokemon(int id, PokemonCreater pokemonCreater);
 }

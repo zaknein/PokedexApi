@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.zaknein.PokedexApi.domain.Pokemon;
 import com.zaknein.PokedexApi.domain.PokemonCreater;
 import com.zaknein.PokedexApi.service.PokemonService;
+import com.zaknein.PokedexApi.service.PokemonServiceImpl;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +23,7 @@ import java.util.List;
 @CrossOrigin
 public class PokemonController{
 
-    private final PokemonService pokeService = new PokemonServiceImpl();
+    private  PokemonService pokeService = new PokemonServiceImpl();
 
     @Autowired
     public PokemonController(PokemonServiceImpl pokeService){
@@ -62,7 +63,5 @@ public class PokemonController{
     public void deletePokemon(@PathVariable int id){
         pokeService.deletePokeById(id);
     }
-
-
 
 }
