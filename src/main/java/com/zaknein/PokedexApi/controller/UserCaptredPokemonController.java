@@ -7,6 +7,9 @@ import com.zaknein.PokedexApi.domain.Pokemon;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 
@@ -21,5 +24,11 @@ public class UserCaptredPokemonController {
     // }
         
 
+    // @PostMapping("/users/{userId}/pokemons")
+    // public Pokemon postCapturedPokemon(@PathVariable int id) {
+  
+    //     return ;
+    // }
     
+
 }
