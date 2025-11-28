@@ -1,6 +1,7 @@
 package com.zaknein.PokedexApi.controller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zaknein.PokedexApi.domain.Pokemon;
@@ -30,5 +31,9 @@ public class UserCaptredPokemonController {
     //     return ;
     // }
     
+    @DeleteMapping("/users/{userId}/pokemons/{capturedId}")
+    public void deleteCapturedPokemon(@PathVariable int id, int capturedId){
+        return;
+    }
 
 }
