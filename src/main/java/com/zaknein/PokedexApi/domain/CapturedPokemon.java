@@ -8,6 +8,11 @@ public class CapturedPokemon{
     int level;
     LocalDateTime capturedAt;
 
+
+    public void setCapturedAt(LocalDateTime capturedAt) {
+        this.capturedAt = capturedAt;
+    }
+
     public CapturedPokemon(){}
 
     public CapturedPokemon(String nickname, int level, LocalDateTime capturedAt){
@@ -17,4 +22,24 @@ public class CapturedPokemon{
         this.capturedAt = capturedAt;
     }
 
+    
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public LocalDateTime getCapturedAt() {
+        return capturedAt;
+    }
 }
