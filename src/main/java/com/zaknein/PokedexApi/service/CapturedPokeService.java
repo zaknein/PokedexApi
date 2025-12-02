@@ -1,13 +1,18 @@
 package com.zaknein.PokedexApi.service;
 
+import java.util.List;
 
-import org.springframework.stereotype.Service;
+import com.zaknein.PokedexApi.domain.CapturedPokemon;
 
 
 
-@Service
-public class CapturedPokeService {
+public interface CapturedPokeService {
 
+    CapturedPokemon enterCapturedPoke();
+
+    List<CapturedPokemon> getAllOfYourPoke();
+
+    void freePokeById(int id);
     
 
 }
