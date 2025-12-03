@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @CrossOrigin
 public class UserCaptredPokemonController {
 
-    private CapturedPokeService CapPoke = new CapturedPokeServiceImpl();
+    private CapturedPokeService CapPoke;
 
     @Autowired
     public UserCaptredPokemonController(CapturedPokeServiceImpl CapPoke){
