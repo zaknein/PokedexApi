@@ -46,7 +46,7 @@ public class UserCaptredPokemonController {
     
     @DeleteMapping("/users/{userId}/pokemons/{capturedId}")
     public void deleteCapturedPokemon(@PathVariable int id, int capturedId){
-        return;
+        CapPoke.freePokeById(id, capturedId)
     }
 
 }

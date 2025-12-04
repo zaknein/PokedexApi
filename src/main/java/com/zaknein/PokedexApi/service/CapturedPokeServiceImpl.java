@@ -56,9 +56,12 @@ public class CapturedPokeServiceImpl implements CapturedPokeService {
     }
 
     @Override
-    public void freePokeById(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'freePokeById'");
+    public void freePokeById(int userId, int capturedId) {
+
+        private List<CapturedPokemon> selectToFreeList = CapturedPokeMap.get(userId);
+
+        selectToFreeList.removeIf(selectToFreeList.getCapPokeId().equals(capturedId));
+
     }
     
 }
