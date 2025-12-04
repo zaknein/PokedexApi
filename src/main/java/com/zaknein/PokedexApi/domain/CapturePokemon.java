@@ -2,7 +2,7 @@ package com.zaknein.PokedexApi.domain;
 
 import java.time.LocalDateTime;
 
-public class CapturedPokemon{
+public class CapturePokemon{
 
     String nickname;
     int level;
@@ -13,9 +13,9 @@ public class CapturedPokemon{
         this.capturedAt = capturedAt;
     }
 
-    public CapturedPokemon(){}
+    public CapturePokemon(){}
 
-    public CapturedPokemon(String nickname, int level, LocalDateTime capturedAt){
+    public CapturePokemon(String nickname, int level, LocalDateTime capturedAt){
 
         this.nickname = nickname;
         this.level = level;

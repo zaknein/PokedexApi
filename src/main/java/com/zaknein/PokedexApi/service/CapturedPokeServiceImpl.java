@@ -1,20 +1,25 @@
 package com.zaknein.PokedexApi.service;
 
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.zaknein.PokedexApi.domain.CapturedPokemon;
+import com.zaknein.PokedexApi.domain.CapturePokemon;
 
 
-
+@service
 public class CapturedPokeServiceImpl implements CapturedPokeService {
 
-    private Map<Integer,CapturedPokemon> CaapturedPokeMap = new Hasmap<>();
-
-    private int CapPokeId = 1;
-
     
+
+    private Map<Integer,List<CapturedPokemon>> CaapturedPokeMap = new Hasmap<>();
+    private List<CapturedPokemon> PokeList = new ArrayList<>();
+
+    private int CapPokeId = PokeList.size() + 1;
+
+
     @Override
     public CapturedPokemon enterCapturedPoke() {
         // TODO Auto-generated method stub
