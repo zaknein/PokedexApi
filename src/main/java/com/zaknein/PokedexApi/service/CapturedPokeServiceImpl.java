@@ -1,6 +1,8 @@
 package com.zaknein.PokedexApi.service;
 
 import org.springframework.stereotype.Service;
+import com.zaknein.PokedexApi.service.PokemonService;
+import com.zaknein.PokedexApi.service.PokemonServiceImpl;
 
 import java.util.List;
 import java.util.HashMap;
@@ -12,7 +14,13 @@ import com.zaknein.PokedexApi.domain.CapturePokemon;
 @service
 public class CapturedPokeServiceImpl implements CapturedPokeService {
 
-    
+    private  PokemonService pokeService;
+
+    @Autowired
+    public PokemonController(PokemonServiceImpl pokeService){
+        this.pokeService = pokeService;
+    }
+
 
     private Map<Integer,List<CapturedPokemon>> CaapturedPokeMap = new Hasmap<>();
     private List<CapturedPokemon> PokeList = new ArrayList<>();
@@ -22,8 +30,12 @@ public class CapturedPokeServiceImpl implements CapturedPokeService {
 
     @Override
     public CapturedPokemon enterCapturedPoke() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'enterCapturedPoke'");
+
+        CapturedPokemon newCaptured = new CapturedPokemon()
+
+
+
+
     }
 
     @Override
