@@ -3,12 +3,14 @@ package com.zaknein.PokedexApi.service;
 import org.springframework.stereotype.Service;
 import com.zaknein.PokedexApi.service.PokemonService;
 import com.zaknein.PokedexApi.service.PokemonServiceImpl;
+import com.zaknein.PokedexApi.domain.Pokemon;
+import com.zaknein.PokedexApi.domain.CapturePokemon;
 
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.zaknein.PokedexApi.domain.CapturePokemon;
+
 
 
 @service
@@ -29,7 +31,11 @@ public class CapturedPokeServiceImpl implements CapturedPokeService {
 
 
     @Override
-    public CapturedPokemon enterCapturedPoke() {
+    public CapturedPokemon enterCapturedPoke(int id, CapturePokemon capturePokemon) {
+
+        private List<Pokemon> pokemonS = pokeService.getThemAll();
+
+        if()
 
         CapturedPokemon newCaptured = new CapturedPokemon()
 
