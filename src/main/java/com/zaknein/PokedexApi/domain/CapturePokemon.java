@@ -3,25 +3,28 @@ package com.zaknein.PokedexApi.domain;
 import java.time.LocalDateTime;
 
 public class CapturePokemon{
-
+    int pokemonId;
     String nickname;
     int level;
     LocalDateTime capturedAt;
 
 
-    public void setCapturedAt(LocalDateTime capturedAt) {
-        this.capturedAt = capturedAt;
-    }
-
     public CapturePokemon(){}
 
-    public CapturePokemon(String nickname, int level, LocalDateTime capturedAt){
-
+    public CapturePokemon(int pokemonId, String nickname, int level, LocalDateTime capturedAt){
+        this.pokemonId = pokemonId,
         this.nickname = nickname;
         this.level = level;
         this.capturedAt = capturedAt;
     }
 
+    public int getPokemonId(){
+        return pokemonId;
+    }
+
+    public void setPokemonId(){
+        this.pokemonId = pokemonId,
+    }
     
     public String getNickname() {
         return nickname;
@@ -42,4 +45,9 @@ public class CapturePokemon{
     public LocalDateTime getCapturedAt() {
         return capturedAt;
     }
+    
+    public void setCapturedAt(LocalDateTime capturedAt) {
+        this.capturedAt = capturedAt;
+    }
+
 }
