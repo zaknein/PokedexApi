@@ -32,10 +32,10 @@ public class UserCaptredPokemonController {
     }
 
     
-    // @GetMapping("/users/{userId}/pokemons")
-    // public Pokemon getCapturedPokemon(@PathVariable int id) {
-    //     return 
-    // }
+    @GetMapping("/users/{userId}/pokemons")
+    public Pokemon getCapturedPokemon(@PathVariable int id) {
+        return CapPoke.getAllOfYourPoke(id);
+    }
         
 
     @PostMapping("/users/{userId}/pokemons")

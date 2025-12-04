@@ -33,8 +33,8 @@ public class CapturedPokeServiceImpl implements CapturedPokeService {
     @Override
     public CapturedPokemon enterCapturedPoke(int id, CapturePokemon capturePokemon) {
 
-        private int existingPokeId= capturePokemon.getPokemonId();
-        private Pokemon pokemonS = pokeService.pokeById(existingPokeId);
+         int existingPokeId= capturePokemon.getPokemonId();
+         Pokemon pokemonS = pokeService.pokeById(existingPokeId);
 
 
         if(pokemonS != null){
@@ -46,19 +46,18 @@ public class CapturedPokeServiceImpl implements CapturedPokeService {
             CapturedPokeMap.put(id, PokeList);
             return newCaptured;             
         }
-
+        return newCaptured;
     }
 
     @Override
     public List<CapturedPokemon> getAllOfYourPoke() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllOfYourPoke'");
+        return List<CapturedPokemon> selectToFreeList = CapturedPokeMap.get(userId);
     }
 
     @Override
     public void freePokeById(int userId, int capturedId) {
 
-        private List<CapturedPokemon> selectToFreeList = CapturedPokeMap.get(userId);
+        List<CapturedPokemon> selectToFreeList = CapturedPokeMap.get(userId);
 
         selectToFreeList.removeIf(selectToFreeList.getCapPokeId().equals(capturedId));
 
