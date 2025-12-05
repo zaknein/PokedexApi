@@ -1,5 +1,6 @@
 package com.zaknein.PokedexApi.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.zaknein.PokedexApi.service.PokemonService;
 import com.zaknein.PokedexApi.service.PokemonServiceImpl;
@@ -7,40 +8,52 @@ import com.zaknein.PokedexApi.domain.Pokemon;
 import com.zaknein.PokedexApi.domain.CapturePokemon;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 
-
-
-@service
+@Service
 public class CapturedPokeServiceImpl implements CapturedPokeService {
 
     private  PokemonService pokeService;
 
     @Autowired
-    public PokemonController(PokemonServiceImpl pokeService){
+    public void PokemonController(PokemonServiceImpl pokeService){
         this.pokeService = pokeService;
     }
 
-
-    private Map<Integer,List<CapturedPokemon>> CapturedPokeMap = new Hasmap<>();
+    private Map<Integer,List<CapturePokemon>> CapturedPokeMap = new HashMap<>();
     
 
-    private int CapPokeId = PokeList.size() + 1;
-
-
     @Override
-    public CapturedPokemon enterCapturedPoke(int id, CapturePokemon capturePokemon) {
+    public CapturePokemon enterCapturedPoke(int id, CapturePokemon capturePokemon) {
 
-
+        CapturePokemon newCaptured = null;
         if(CapturedPokeMap.get(id) != null){
-            List<CapturedPokemon> PokeList = CapturedPokeMap.get(userId);
+            List<CapturePokemon> PokeList = CapturedPokeMap.get(id);
             int existingPokeId= capturePokemon.getPokemonId();
             Pokemon pokemonS = pokeService.pokeById(existingPokeId);
+            int CapPokeId = PokeList.size();
+            CapPokeId ++;
             if(pokemonS != null){
-                CapturedPokemon newCaptured = new CapturedPokemon(CapPokeId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
-                capturePokemon.getLevel(), capturePokemon.getCapturedAt())
+                newCaptured = new CapturePokemon(CapPokeId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
+                capturePokemon.getLevel(), capturePokemon.getCapturedAt());
+
+                PokeList.add(newCaptured);
+
+                CapturedPokeMap.put(id, PokeList);
+                return newCaptured;             
+            }
+        }else{
+            List<CapturePokemon> PokeList = new ArrayList<>();
+            int existingPokeId= capturePokemon.getPokemonId();
+            Pokemon pokemonS = pokeService.pokeById(existingPokeId);
+            int CapPokeId = PokeList.size();
+            CapPokeId ++;
+            if(pokemonS != null){
+                newCaptured = new CapturePokemon(CapPokeId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
+                capturePokemon.getLevel(), capturePokemon.getCapturedAt());
 
                 PokeList.add(newCaptured);
 
@@ -65,17 +78,16 @@ public class CapturedPokeServiceImpl implements CapturedPokeService {
     }
 
     @Override
-    public List<CapturedPokemon> getAllOfYourPoke() {
-        return List<CapturedPokemon> selectToFreeList = CapturedPokeMap.get(userId);
+    public List<CapturePokemon> getAllOfYourPoke(int userId) {
+        List<CapturePokemon> allPokeList = CapturedPokeMap.get(userId);
+        return allPokeList;
     }
 
     @Override
     public void freePokeById(int userId, int capturedId) {
 
-        List<CapturedPokemon> selectToFreeList = CapturedPokeMap.get(userId);
-
-        selectToFreeList.removeIf(selectToFreeList.getCapPokeId().equals(capturedId));
+        List<CapturePokemon> selectToFreeList = CapturedPokeMap.get(userId);
 
     }
-    
+
 }

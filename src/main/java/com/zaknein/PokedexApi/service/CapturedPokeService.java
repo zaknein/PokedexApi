@@ -2,17 +2,17 @@ package com.zaknein.PokedexApi.service;
 
 import java.util.List;
 
-import com.zaknein.PokedexApi.domain.CapturedPokemon;
+import com.zaknein.PokedexApi.domain.CapturePokemon;
 
 
 
 public interface CapturedPokeService {
 
-    CapturedPokemon enterCapturedPoke();
+    CapturePokemon enterCapturedPoke(int id, CapturePokemon capturePokemon);
 
-    List<CapturedPokemon> getAllOfYourPoke();
+    List<CapturePokemon> getAllOfYourPoke(int id);
 
-    void freePokeById(int id);
+    void freePokeById(int userId, int capturedId);
     
 
 }
