@@ -25,7 +25,7 @@ public class CapturedPokeServiceImpl implements CapturedPokeService {
 
 
     private Map<Integer,List<CapturedPokemon>> CapturedPokeMap = new Hasmap<>();
-    private List<CapturedPokemon> PokeList = new ArrayList<>();
+    
 
     private int CapPokeId = PokeList.size() + 1;
 
@@ -33,9 +33,14 @@ public class CapturedPokeServiceImpl implements CapturedPokeService {
     @Override
     public CapturedPokemon enterCapturedPoke(int id, CapturePokemon capturePokemon) {
 
-         int existingPokeId= capturePokemon.getPokemonId();
-         Pokemon pokemonS = pokeService.pokeById(existingPokeId);
 
+
+
+
+        
+        int existingPokeId= capturePokemon.getPokemonId();
+        Pokemon pokemonS = pokeService.pokeById(existingPokeId);
+        List<CapturedPokemon> PokeList = new ArrayList<>();
 
         if(pokemonS != null){
             CapturedPokemon newCaptured = new CapturedPokemon(CapPokeId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
