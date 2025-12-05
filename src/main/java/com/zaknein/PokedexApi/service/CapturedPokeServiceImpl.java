@@ -34,23 +34,33 @@ public class CapturedPokeServiceImpl implements CapturedPokeService {
     public CapturedPokemon enterCapturedPoke(int id, CapturePokemon capturePokemon) {
 
 
+        if(CapturedPokeMap.get(id) != null){
+            List<CapturedPokemon> PokeList = CapturedPokeMap.get(userId);
+            int existingPokeId= capturePokemon.getPokemonId();
+            Pokemon pokemonS = pokeService.pokeById(existingPokeId);
+            if(pokemonS != null){
+                CapturedPokemon newCaptured = new CapturedPokemon(CapPokeId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
+                capturePokemon.getLevel(), capturePokemon.getCapturedAt())
 
+                PokeList.add(newCaptured);
 
-
-        
-        int existingPokeId= capturePokemon.getPokemonId();
-        Pokemon pokemonS = pokeService.pokeById(existingPokeId);
-        List<CapturedPokemon> PokeList = new ArrayList<>();
-
-        if(pokemonS != null){
-            CapturedPokemon newCaptured = new CapturedPokemon(CapPokeId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
-             capturePokemon.getLevel(), capturePokemon.getCapturedAt())
-
-            PokeList.add(newCaptured);
-
-            CapturedPokeMap.put(id, PokeList);
-            return newCaptured;             
+                CapturedPokeMap.put(id, PokeList);
+                return newCaptured;             
+            }
         }
+        // int existingPokeId= capturePokemon.getPokemonId();
+        // Pokemon pokemonS = pokeService.pokeById(existingPokeId);
+        // List<CapturedPokemon> PokeList = new ArrayList<>();
+
+        // if(pokemonS != null){
+        //     CapturedPokemon newCaptured = new CapturedPokemon(CapPokeId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
+        //      capturePokemon.getLevel(), capturePokemon.getCapturedAt())
+
+        //     PokeList.add(newCaptured);
+
+        //     CapturedPokeMap.put(id, PokeList);
+        //     return newCaptured;             
+        // }
         return newCaptured;
     }
 
