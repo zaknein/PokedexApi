@@ -2,8 +2,6 @@ package com.zaknein.PokedexApi.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.zaknein.PokedexApi.service.PokemonService;
-import com.zaknein.PokedexApi.service.PokemonServiceImpl;
 import com.zaknein.PokedexApi.domain.Pokemon;
 import com.zaknein.PokedexApi.domain.CapturePokemon;
 
@@ -61,19 +59,6 @@ public class CapturedPokeServiceImpl implements CapturedPokeService {
                 return newCaptured;             
             }
         }
-        // int existingPokeId= capturePokemon.getPokemonId();
-        // Pokemon pokemonS = pokeService.pokeById(existingPokeId);
-        // List<CapturedPokemon> PokeList = new ArrayList<>();
-
-        // if(pokemonS != null){
-        //     CapturedPokemon newCaptured = new CapturedPokemon(CapPokeId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
-        //      capturePokemon.getLevel(), capturePokemon.getCapturedAt())
-
-        //     PokeList.add(newCaptured);
-
-        //     CapturedPokeMap.put(id, PokeList);
-        //     return newCaptured;             
-        // }
         return newCaptured;
     }
 
