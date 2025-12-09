@@ -34,9 +34,9 @@ public class UserCaptredPokemonController {
     }
         
     @PostMapping("/users/{userId}/pokemons")
-    public CapturePokemon postCapturedPokemon(@PathVariable int id, @RequestBody CapturePokemon capturePokemon) {
+    public CapturePokemon postCapturedPokemon(@PathVariable int userId, @RequestBody CapturePokemon capturePokemon) {
   
-        return CapPoke.enterCapturedPoke(id, capturePokemon);
+        return CapPoke.enterCapturedPoke(userId, capturePokemon);
     }
     
     @DeleteMapping("/users/{userId}/pokemons/{capturedId}")
