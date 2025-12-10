@@ -8,6 +8,7 @@ import com.zaknein.PokedexApi.domain.CapturePokemon;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 
@@ -69,9 +70,21 @@ public class CapturedPokeServiceImpl implements CapturedPokeService {
     }
 
     @Override
-    public void freePokeById(int userId, int capturedId) {
+    public void freePokeById(int userId, Integer capturedId) {
 
         List<CapturePokemon> selectToFreeList = CapturedPokeMap.get(userId);
+
+        if(selectToFreeList != null){
+            Iterator<CapturePokemon> iterator = selectToFreeList.iterator();
+            while(iterator.hasNext()){
+                CapturePokemon poke = iterator.next();
+
+                if(poke.getCapturedId() == capturedId){
+                    iterator.remove();
+                }
+            }
+        }
+
 
     }
 

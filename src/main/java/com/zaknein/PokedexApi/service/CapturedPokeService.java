@@ -12,7 +12,7 @@ public interface CapturedPokeService {
 
     List<CapturePokemon> getAllOfYourPoke(int id);
 
-    void freePokeById(int userId, int capturedId);
+    void freePokeById(int userId, Integer capturedId);
     
 
 }

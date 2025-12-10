@@ -29,8 +29,8 @@ public class UserCaptredPokemonController {
     }
     
     @GetMapping("/users/{userId}/pokemons")
-    public List<CapturePokemon>  getCapturedPokemon(@PathVariable int id) {
-        return CapPoke.getAllOfYourPoke(id);
+    public List<CapturePokemon>  getCapturedPokemon(@PathVariable int userId) {
+        return CapPoke.getAllOfYourPoke(userId);
     }
         
     @PostMapping("/users/{userId}/pokemons")
@@ -40,8 +40,8 @@ public class UserCaptredPokemonController {
     }
     
     @DeleteMapping("/users/{userId}/pokemons/{capturedId}")
-    public void deleteCapturedPokemon(@PathVariable int id, int capturedId){
-        CapPoke.freePokeById(id, capturedId);
+    public void deleteCapturedPokemon(@PathVariable int userId, @PathVariable Integer capturedId){
+        CapPoke.freePokeById(userId, capturedId);
     }
 
 }
