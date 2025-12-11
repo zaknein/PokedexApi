@@ -39,14 +39,6 @@ public class PokemonServiceImpl implements PokemonService {
 
     private int futurePokeId = 1;
 
-    public void sync(){
-        try{
-            mapper.writeValue(pokeFile, pokemonMap);
-        }catch (IOException e) {
-            System.out.println("No existe archivo");
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public Pokemon createPokemon(PokemonCreater pokemonC ){
@@ -57,6 +49,7 @@ public class PokemonServiceImpl implements PokemonService {
          pokemonC.getWeight(), pokemonC.getDescription(), pokemonC.getCreatedAt(), pokemonC.getTypes());
 
         pokemonMap.put(pokemonId, newPoke);
+        sync();
         return newPoke;
     
     }
@@ -74,6 +67,7 @@ public class PokemonServiceImpl implements PokemonService {
     @Override
     public void deletePokeById(int id){
         pokemonMap.remove(id);
+        sync();
     }
 
     @Override
@@ -87,10 +81,20 @@ public class PokemonServiceImpl implements PokemonService {
         oldPoke.setWeight(pokemonCreater.getWeight());
         oldPoke.setTypes(pokemonCreater.getTypes());
 
+        sync();
+
         return oldPoke;
 
     }
 
+    public void sync(){
+        try{
+            mapper.writeValue(pokeFile, pokemonMap);
+        }catch (IOException e) {
+            System.out.println("No existe archivo");
+            e.printStackTrace();
+        }
+    }
 
 
 
