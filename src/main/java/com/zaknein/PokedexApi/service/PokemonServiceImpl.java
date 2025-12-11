@@ -11,6 +11,7 @@ import com.zaknein.PokedexApi.domain.PokemonCreater;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.io.File;
+import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,9 +25,18 @@ public class PokemonServiceImpl implements PokemonService {
 
     private static final File pokeFile = new File("pokedex.json");
     private static final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
-
+    
 
     private Map<Integer,Pokemon> pokemonMap = new HashMap<>();
+
+    public PokemonServiceImpl() throws IOException {
+        if (pokeFile.exists()) {
+            pokemonMap = mapper.readValue(pokeFile, mapper.getTypeFactory().constructMapLikeType(HashMap.class, Integer.class, Pokemon.class));
+        } else {
+            pokemonMap = new HashMap<>();
+        }
+    }
+
 
     private int futurePokeId = 1;
 
