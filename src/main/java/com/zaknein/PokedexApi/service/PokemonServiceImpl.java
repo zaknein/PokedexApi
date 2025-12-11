@@ -8,6 +8,10 @@ import org.springframework.http.ResponseEntity;
 import com.zaknein.PokedexApi.domain.Pokemon;
 import com.zaknein.PokedexApi.domain.PokemonCreater;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import java.io.File;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +21,10 @@ import java.util.Map;
 
 @Service
 public class PokemonServiceImpl implements PokemonService {
+
+    private static final File pokeFile = new File("pokedex.json");
+    private static final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
+
 
     private Map<Integer,Pokemon> pokemonMap = new HashMap<>();
 
