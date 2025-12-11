@@ -37,9 +37,16 @@ public class PokemonServiceImpl implements PokemonService {
         }
     }
 
-
     private int futurePokeId = 1;
 
+    public void sync(){
+        try{
+            mapper.writeValue(pokeFile, pokemonMap);
+        }catch (IOException e) {
+            System.out.println("No existe archivo");
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public Pokemon createPokemon(PokemonCreater pokemonC ){
