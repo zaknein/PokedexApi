@@ -3,9 +3,13 @@ package com.zaknein.PokedexApi.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.zaknein.PokedexApi.domain.Pokemon;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.zaknein.PokedexApi.domain.CapturePokemon;
 
 import java.util.List;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -15,6 +19,10 @@ import java.util.Map;
 @Service
 public class CapturedPokeServiceImpl implements CapturedPokeService {
 
+    
+    private static final File pokeFile = new File("capturePokemon.json");
+    private static final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
+    
     private  PokemonService pokeService;
 
     @Autowired
@@ -24,6 +32,14 @@ public class CapturedPokeServiceImpl implements CapturedPokeService {
 
     private Map<Integer,List<CapturePokemon>> CapturedPokeMap = new HashMap<>();
     
+
+    public CapturedPokeServiceImpl() throws IOException {
+        if (pokeFile.exists()) {
+            CapturedPokeMap = mapper.readValue(pokeFile, mapper.getTypeFactory().constructMapLikeType(HashMap.class, Integer.class, CapturePokemon.class));
+        } else {
+            CapturedPokeMap = new HashMap<>();
+        }
+    }
 
     @Override
     public CapturePokemon enterCapturedPoke(int id, CapturePokemon capturePokemon) {
@@ -60,6 +76,7 @@ public class CapturedPokeServiceImpl implements CapturedPokeService {
                 return newCaptured;             
             }
         }
+        sync();
         return newCaptured;
     }
 
@@ -84,8 +101,17 @@ public class CapturedPokeServiceImpl implements CapturedPokeService {
                 }
             }
         }
+        sync();
 
+    }
 
+    public void sync(){
+        try{
+            mapper.writeValue(pokeFile, CapturedPokeMap);
+        }catch (IOException e) {
+            System.out.println("No existe archivo");
+            e.printStackTrace();
+        }
     }
 
 }
