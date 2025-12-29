@@ -45,14 +45,7 @@ public class PokemonController {
     @GetMapping("/pokemon")
     public List<Pokemon> getPokemon() {
 
-        List<Pokemon> poke =pokeService.getThemAll();
-
-        if(poke.isEmpty() || poke == null){
-            throw new NoPokeFoundException("There is no pokemon to list");
-        }else{
-            return pokeService.getThemAll();
-        }
-
+        return pokeService.getThemAll();
     }
 
     @ExceptionHandler(value = NoPokeFoundException.class)

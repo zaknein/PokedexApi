@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.zaknein.PokedexApi.domain.Pokemon;
 import com.zaknein.PokedexApi.domain.PokemonCreater;
-
+import com.zaknein.PokedexApi.exceptions.NoPokeFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.io.File;
@@ -54,12 +54,25 @@ public class PokemonServiceImpl implements PokemonService {
 
     @Override
     public List<Pokemon> getThemAll(){
-        return new ArrayList(pokemonMap.values());
+        List<Pokemon> poke = new ArrayList(pokemonMap.values());
+        if(poke.isEmpty() || poke == null){
+            throw new NoPokeFoundException("There is no pokemon to list");
+        }else{
+            return new ArrayList(pokemonMap.values());
+        }
+
     }
 
     @Override
     public Pokemon pokeById(int id){
-        return pokemonMap.get(id);
+
+        Pokemon poke = pokemonMap.get(id);
+        if(poke == null){
+            throw new NoPokeFoundException("There is no pokemon with the id " + id + " try again");
+        }else{
+            return pokemonMap.get(id);
+        }
+
     }
 
     @Override
