@@ -83,18 +83,35 @@ public class PokemonServiceImpl implements PokemonService {
 
     @Override
     public Pokemon updatePokemon(int id, PokemonCreater pokemonCreater){
+
+        
         Pokemon oldPoke = pokemonMap.get(id);
+        if(oldPoke == null){
+            throw new NoPokeFoundException("There is no pokemon with the id " + id + " try again");
+        }else{
+            oldPoke.setName(pokemonCreater.getName());
+            oldPoke.setDescription(pokemonCreater.getDescription());
+            oldPoke.setSpecies(pokemonCreater.getSpecies());
+            oldPoke.setHeight(pokemonCreater.getHeight());
+            oldPoke.setWeight(pokemonCreater.getWeight());
+            oldPoke.setTypes(pokemonCreater.getTypes());
 
-        oldPoke.setName(pokemonCreater.getName());
-        oldPoke.setDescription(pokemonCreater.getDescription());
-        oldPoke.setSpecies(pokemonCreater.getSpecies());
-        oldPoke.setHeight(pokemonCreater.getHeight());
-        oldPoke.setWeight(pokemonCreater.getWeight());
-        oldPoke.setTypes(pokemonCreater.getTypes());
+            sync();
 
-        sync();
+            return oldPoke;
+        }
 
-        return oldPoke;
+
+        // oldPoke.setName(pokemonCreater.getName());
+        // oldPoke.setDescription(pokemonCreater.getDescription());
+        // oldPoke.setSpecies(pokemonCreater.getSpecies());
+        // oldPoke.setHeight(pokemonCreater.getHeight());
+        // oldPoke.setWeight(pokemonCreater.getWeight());
+        // oldPoke.setTypes(pokemonCreater.getTypes());
+
+        // sync();
+
+        // return oldPoke;
 
     }
 
