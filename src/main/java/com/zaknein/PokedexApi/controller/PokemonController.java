@@ -45,9 +45,13 @@ public class PokemonController {
     @GetMapping("/pokemon")
     public List<Pokemon> getPokemon() {
 
-        throw new NoPokeFoundException("caca");
+        List<Pokemon> poke =pokeService.getThemAll();
 
-        // return pokeService.getThemAll();
+        if(poke.isEmpty() || poke == null){
+            throw new NoPokeFoundException("There is no pokemon to list");
+        }else{
+            return pokeService.getThemAll();
+        }
 
     }
 
@@ -55,9 +59,6 @@ public class PokemonController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse notFound(NoPokeFoundException ex) {
 
-
-
-        
         return new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
     }
 
