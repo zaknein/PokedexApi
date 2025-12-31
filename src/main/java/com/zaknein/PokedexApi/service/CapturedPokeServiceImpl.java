@@ -3,6 +3,7 @@ package com.zaknein.PokedexApi.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.zaknein.PokedexApi.domain.Pokemon;
+import com.zaknein.PokedexApi.exceptions.NoPokeFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.zaknein.PokedexApi.domain.CapturePokemon;
@@ -91,6 +92,7 @@ public class CapturedPokeServiceImpl implements CapturedPokeService {
 
         List<CapturePokemon> selectToFreeList = CapturedPokeMap.get(userId);
 
+
         if(selectToFreeList != null){
             Iterator<CapturePokemon> iterator = selectToFreeList.iterator();
             while(iterator.hasNext()){
@@ -100,6 +102,8 @@ public class CapturedPokeServiceImpl implements CapturedPokeService {
                     iterator.remove();
                 }
             }
+        }else{
+            throw new NoPokeFoundException("There is no pokemon with the id " + capturedId + " try again");
         }
         sync();
 

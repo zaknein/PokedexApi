@@ -102,17 +102,6 @@ public class PokemonServiceImpl implements PokemonService {
         }
 
 
-        // oldPoke.setName(pokemonCreater.getName());
-        // oldPoke.setDescription(pokemonCreater.getDescription());
-        // oldPoke.setSpecies(pokemonCreater.getSpecies());
-        // oldPoke.setHeight(pokemonCreater.getHeight());
-        // oldPoke.setWeight(pokemonCreater.getWeight());
-        // oldPoke.setTypes(pokemonCreater.getTypes());
-
-        // sync();
-
-        // return oldPoke;
-
     }
 
     public void sync(){
