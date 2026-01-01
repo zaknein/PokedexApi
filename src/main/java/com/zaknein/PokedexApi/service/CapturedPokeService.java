@@ -14,5 +14,5 @@ public interface CapturedPokeService {
 
     void freePokeById(int userId, Integer capturedId);
     
-
+    CapturePokemon getCapturePokeById(int id);
 }

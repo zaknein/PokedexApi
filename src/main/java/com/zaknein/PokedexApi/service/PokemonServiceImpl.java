@@ -4,9 +4,11 @@ package com.zaknein.PokedexApi.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.zaknein.PokedexApi.domain.CapturePokemon;
 import com.zaknein.PokedexApi.domain.Pokemon;
 import com.zaknein.PokedexApi.domain.PokemonCreater;
 import com.zaknein.PokedexApi.exceptions.NoPokeFoundException;
+import com.zaknein.PokedexApi.exceptions.PokeUnderUserException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.io.File;
@@ -85,9 +87,18 @@ public class PokemonServiceImpl implements PokemonService {
 
     @Override
     public void deletePokeById(int id){
-        // CapturedPokeService.
-        pokemonMap.remove(id);
-        sync();
+        Pokemon poke = pokemonMap.get(id);
+        CapturePokemon capPoke = CapturedPokeService.getCapturePokeById(id);
+        if(capPoke != null){
+            throw new PokeUnderUserException("This poke with id " + id + " has been captured by an user and cannot be deleted");
+        }else if ( poke == null) {
+            throw new NoPokeFoundException("There is no pokemon with the id " + id + " try again");
+        }else{
+            pokemonMap.remove(id);
+            sync();
+        }
+        
+
     }
 
     @Override

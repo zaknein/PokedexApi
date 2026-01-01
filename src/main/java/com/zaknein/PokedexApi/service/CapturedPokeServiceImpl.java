@@ -16,27 +16,25 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-
 @Service
 public class CapturedPokeServiceImpl implements CapturedPokeService {
 
-    
     private static final File pokeFile = new File("capturePokemon.json");
     private static final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
-    
-    private  PokemonService pokeService;
+
+    private PokemonService pokeService;
 
     @Autowired
-    public void PokemonController(PokemonServiceImpl pokeService){
+    public void PokemonController(PokemonServiceImpl pokeService) {
         this.pokeService = pokeService;
     }
 
-    private Map<Integer,List<CapturePokemon>> CapturedPokeMap = new HashMap<>();
-    
+    private Map<Integer, List<CapturePokemon>> CapturedPokeMap = new HashMap<>();
 
     public CapturedPokeServiceImpl() throws IOException {
         if (pokeFile.exists()) {
-            CapturedPokeMap = mapper.readValue(pokeFile, mapper.getTypeFactory().constructMapLikeType(HashMap.class, Integer.class, CapturePokemon.class));
+            CapturedPokeMap = mapper.readValue(pokeFile,
+                    mapper.getTypeFactory().constructMapLikeType(HashMap.class, Integer.class, CapturePokemon.class));
         } else {
             CapturedPokeMap = new HashMap<>();
         }
@@ -46,35 +44,35 @@ public class CapturedPokeServiceImpl implements CapturedPokeService {
     public CapturePokemon enterCapturedPoke(int id, CapturePokemon capturePokemon) {
 
         CapturePokemon newCaptured = null;
-        if(CapturedPokeMap.get(id) != null){
+        if (CapturedPokeMap.get(id) != null) {
             List<CapturePokemon> PokeList = CapturedPokeMap.get(id);
-            int existingPokeId= capturePokemon.getPokemonId();
+            int existingPokeId = capturePokemon.getPokemonId();
             Pokemon pokemonS = pokeService.pokeById(existingPokeId);
             int CapPokeId = PokeList.size();
-            CapPokeId ++;
-            if(pokemonS != null){
+            CapPokeId++;
+            if (pokemonS != null) {
                 newCaptured = new CapturePokemon(CapPokeId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
-                capturePokemon.getLevel(), capturePokemon.getCapturedAt());
+                        capturePokemon.getLevel(), capturePokemon.getCapturedAt());
 
                 PokeList.add(newCaptured);
 
                 CapturedPokeMap.put(id, PokeList);
-                return newCaptured;             
+                return newCaptured;
             }
-        }else{
+        } else {
             List<CapturePokemon> PokeList = new ArrayList<>();
-            int existingPokeId= capturePokemon.getPokemonId();
+            int existingPokeId = capturePokemon.getPokemonId();
             Pokemon pokemonS = pokeService.pokeById(existingPokeId);
             int CapPokeId = PokeList.size();
-            CapPokeId ++;
-            if(pokemonS != null){
+            CapPokeId++;
+            if (pokemonS != null) {
                 newCaptured = new CapturePokemon(CapPokeId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
-                capturePokemon.getLevel(), capturePokemon.getCapturedAt());
+                        capturePokemon.getLevel(), capturePokemon.getCapturedAt());
 
                 PokeList.add(newCaptured);
 
                 CapturedPokeMap.put(id, PokeList);
-                return newCaptured;             
+                return newCaptured;
             }
         }
         sync();
@@ -92,27 +90,39 @@ public class CapturedPokeServiceImpl implements CapturedPokeService {
 
         List<CapturePokemon> selectToFreeList = CapturedPokeMap.get(userId);
 
-
-        if(selectToFreeList != null){
+        if (selectToFreeList != null) {
             Iterator<CapturePokemon> iterator = selectToFreeList.iterator();
-            while(iterator.hasNext()){
+            while (iterator.hasNext()) {
                 CapturePokemon poke = iterator.next();
 
-                if(poke.getCapturedId() == capturedId){
+                if (poke.getCapturedId() == capturedId) {
                     iterator.remove();
                 }
             }
-        }else{
+        } else {
             throw new NoPokeFoundException("There is no pokemon with the id " + capturedId + " try again");
         }
         sync();
 
     }
 
-    public void sync(){
-        try{
+    public CapturePokemon getCapturePokeById(int id){
+
+        for (List<CapturePokemon> listaDePokes : CapturedPokeMap.values()) {        
+            for (CapturePokemon CapturePokemon : listaDePokes) {            
+                if (CapturePokemon.getCapturedId() == id) {
+                    return CapturePokemon; 
+                }
+            }
+        }
+        return null;
+
+    }
+
+    public void sync() {
+        try {
             mapper.writeValue(pokeFile, CapturedPokeMap);
-        }catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("No existe archivo");
             e.printStackTrace();
         }
