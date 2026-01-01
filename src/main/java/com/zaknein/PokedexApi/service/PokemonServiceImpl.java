@@ -1,6 +1,7 @@
 package com.zaknein.PokedexApi.service;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zaknein.PokedexApi.domain.Pokemon;
@@ -20,6 +21,13 @@ import java.util.Map;
 
 @Service
 public class PokemonServiceImpl implements PokemonService {
+
+    private CapturedPokeService CapturedPokeService;
+
+    @Autowired
+    public void UserCaptredPokemonController(CapturedPokeServiceImpl CapturedPokeService){
+        this.CapturedPokeService = CapturedPokeService;
+    }
 
     private static final File pokeFile = new File("pokedex.json");
     private static final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
@@ -77,6 +85,7 @@ public class PokemonServiceImpl implements PokemonService {
 
     @Override
     public void deletePokeById(int id){
+        // CapturedPokeService.
         pokemonMap.remove(id);
         sync();
     }
