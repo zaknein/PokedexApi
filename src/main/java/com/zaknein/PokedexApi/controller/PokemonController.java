@@ -11,6 +11,7 @@ import com.zaknein.PokedexApi.domain.ErrorResponse;
 import com.zaknein.PokedexApi.domain.Pokemon;
 import com.zaknein.PokedexApi.domain.PokemonCreater;
 import com.zaknein.PokedexApi.exceptions.NoPokeFoundException;
+import com.zaknein.PokedexApi.exceptions.PokeUnderUserException;
 import com.zaknein.PokedexApi.service.PokemonService;
 import com.zaknein.PokedexApi.service.PokemonServiceImpl;
 
@@ -54,6 +55,14 @@ public class PokemonController {
 
         return new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
     }
+
+    @ExceptionHandler(value = PokeUnderUserException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse badRequest(PokeUnderUserException ex) {
+
+        return new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
+    }
+
 
     @GetMapping("/pokemon/{id}")
     public Pokemon getPokemonById(@PathVariable int id) {
