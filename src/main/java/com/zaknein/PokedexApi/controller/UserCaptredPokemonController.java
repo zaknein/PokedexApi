@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zaknein.PokedexApi.service.CapturedPokeService;
-import com.zaknein.PokedexApi.service.CapturedPokeServiceImpl;
 import com.zaknein.PokedexApi.domain.CapturePokemon;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +23,7 @@ public class UserCaptredPokemonController {
     private CapturedPokeService CapPoke;
 
     @Autowired
-    public UserCaptredPokemonController(CapturedPokeServiceImpl CapPoke){
+    public UserCaptredPokemonController(CapturedPokeService CapPoke){
         this.CapPoke = CapPoke;        
     }
     

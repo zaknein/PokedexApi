@@ -13,7 +13,6 @@ import com.zaknein.PokedexApi.domain.PokemonCreater;
 import com.zaknein.PokedexApi.exceptions.NoPokeFoundException;
 import com.zaknein.PokedexApi.exceptions.PokeUnderUserException;
 import com.zaknein.PokedexApi.service.PokemonService;
-import com.zaknein.PokedexApi.service.PokemonServiceImpl;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,7 +33,7 @@ public class PokemonController {
     private PokemonService pokeService;
 
     @Autowired
-    public PokemonController(PokemonServiceImpl pokeService) {
+    public PokemonController(PokemonService pokeService) {
         this.pokeService = pokeService;
     }
 

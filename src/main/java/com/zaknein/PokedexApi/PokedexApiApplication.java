@@ -11,3 +11,8 @@ public class PokedexApiApplication {
 	}
 
 }
+
+// duplicar implementaciones
+// renombrarlas a repository
+// de los repositorios quitar inyeccion de services
+// de los services inyectar solo los repositorys

@@ -1,18 +1,50 @@
 package com.zaknein.PokedexApi.service;
 
-import java.util.List;
-
+import org.springframework.stereotype.Service;
+import com.zaknein.PokedexApi.domain.Pokemon;
+import com.zaknein.PokedexApi.exceptions.NoPokeFoundException;
+import com.zaknein.PokedexApi.repository.CapturedPokeRepository;
+import com.zaknein.PokedexApi.repository.PokemonRepository;
 import com.zaknein.PokedexApi.domain.CapturePokemon;
 
+import java.util.List;
+import java.io.IOException;
 
 
-public interface CapturedPokeService {
-
-    CapturePokemon enterCapturedPoke(int id, CapturePokemon capturePokemon);
-
-    List<CapturePokemon> getAllOfYourPoke(int id);
-
-    void freePokeById(int userId, Integer capturedId);
+@Service
+public class CapturedPokeService {
     
-    CapturePokemon getCapturePokeById(int id);
+    private final PokemonRepository pokemonRepository;
+    private final CapturedPokeRepository capturedPokeRepository;
+
+
+    public CapturedPokeService(PokemonRepository pokemonRepository, CapturedPokeRepository capturedPokeRepository) throws IOException {
+        this.pokemonRepository = pokemonRepository;
+        this.capturedPokeRepository = capturedPokeRepository;
+    }
+
+    public CapturePokemon enterCapturedPoke(int userId, CapturePokemon capturePokemon) {
+        
+
+        int pokeIdToCapture = capturePokemon.getPokemonId();
+        Pokemon pokemon = pokemonRepository.pokeById(pokeIdToCapture);
+        if (pokemon != null) {
+            
+            return capturedPokeRepository.enterCapturedPoke(userId, capturePokemon);
+         
+            
+        } else {
+            throw new NoPokeFoundException("There is no pokemon with the id " + pokeIdToCapture + " try again");
+        }
+    }
+
+    public List<CapturePokemon> getAllOfYourPoke(int userId) {
+        List<CapturePokemon> allPokeList = capturedPokeRepository.getAllOfYourPoke(userId);
+        return allPokeList;
+    }
+
+    public void freePokeById(int userId, Integer capturedId) {
+
+        capturedPokeRepository.freePokeById(userId, capturedId);
+    }
 }
