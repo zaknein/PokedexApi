@@ -2,6 +2,7 @@ package com.zaknein.PokedexApi.repository;
 
 import org.springframework.stereotype.Service;
 import com.zaknein.PokedexApi.exceptions.NoPokeFoundException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.zaknein.PokedexApi.domain.CapturePokemon;
@@ -24,8 +25,11 @@ public class CapturedPokeRepositoryImpl implements CapturedPokeRepository {
 
     public CapturedPokeRepositoryImpl() throws IOException {
         if (pokeFile.exists()) {
-            capturedPokeMap = mapper.readValue(pokeFile,
-                    mapper.getTypeFactory().constructMapLikeType(HashMap.class, Integer.class, CapturePokemon.class));
+            
+            capturedPokeMap = mapper.readValue(pokeFile, new TypeReference<Map<Integer, List<CapturePokemon>>>() {});
+
+            // capturedPokeMap = mapper.readValue(pokeFile,
+            //         mapper.getTypeFactory().constructMapLikeType(HashMap.class, Integer.class, CapturePokemon.class));
         } else {
             capturedPokeMap = new HashMap<>();
         }
