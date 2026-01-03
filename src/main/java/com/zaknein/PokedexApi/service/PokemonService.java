@@ -2,9 +2,11 @@ package com.zaknein.PokedexApi.service;
 
 import org.springframework.stereotype.Service;
 
+import com.zaknein.PokedexApi.domain.CapturePokemon;
 import com.zaknein.PokedexApi.domain.Pokemon;
 import com.zaknein.PokedexApi.domain.PokemonCreater;
 import com.zaknein.PokedexApi.exceptions.NoPokeFoundException;
+import com.zaknein.PokedexApi.exceptions.PokeUnderUserException;
 import com.zaknein.PokedexApi.repository.CapturedPokeRepository;
 import com.zaknein.PokedexApi.repository.PokemonRepository;
 import java.io.IOException;
@@ -51,6 +53,22 @@ public class PokemonService {
     }
 
     public void deletePokeById(int id) {
+
+
+        
+        Pokemon poke = pokemonRepository.pokeById(id);
+        if(poke ==null){
+            throw new NoPokeFoundException("There is no pokemon with the id " + id + " try again");
+        }
+
+        CapturePokemon pokemon = capturedPokeRepository.getCapturePokeById(id);
+        if(pokemon != null){
+             throw new PokeUnderUserException("This poke with id " + id + " has been captured by an user and cannot be deleted");
+        }
+        pokemonRepository.deletePokeById(id);
+ 
+        
+
         // Pokemon poke = pokemonMap.get(id);
         // CapturePokemon capPoke = CapturedPokeService.getCapturePokeById(id);
         // if (capPoke != null) {

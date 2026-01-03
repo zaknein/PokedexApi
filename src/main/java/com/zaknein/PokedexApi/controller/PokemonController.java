@@ -49,17 +49,15 @@ public class PokemonController {
     }
 
     @ExceptionHandler(value = NoPokeFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse notFound(NoPokeFoundException ex) {
 
         return new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
     }
 
     @ExceptionHandler(value = PokeUnderUserException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse badRequest(PokeUnderUserException ex) {
 
-        return new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
+        return new ErrorResponse(HttpStatus.BAD_REQUEST.value(), ex.getMessage());
     }
 
 

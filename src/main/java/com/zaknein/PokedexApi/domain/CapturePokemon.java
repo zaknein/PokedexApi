@@ -2,6 +2,10 @@ package com.zaknein.PokedexApi.domain;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+
+@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 public class CapturePokemon{
     int capturedId;
     int pokemonId;
@@ -23,14 +27,14 @@ public class CapturePokemon{
         return capturedId;
     }
 
-    public void setCapturedId(){
+    public void setCapturedId(int capturedId){
         this.capturedId = capturedId;
     }
     public int getPokemonId(){
         return pokemonId;
     }
 
-    public void setPokemonId(){
+    public void setPokemonId(int pokemonId){
         this.pokemonId = pokemonId;
     }
     

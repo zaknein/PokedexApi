@@ -13,4 +13,6 @@ public interface CapturedPokeRepository {
     List<CapturePokemon> getAllOfYourPoke(int id);
 
     void freePokeById(int userId, Integer capturedId);
+
+    CapturePokemon getCapturePokeById(int id);
 }

@@ -37,9 +37,9 @@ public class CapturedPokeRepositoryImpl implements CapturedPokeRepository {
         CapturePokemon newCaptured = null;
         if (capturedPokeMap.get(userId) != null) {
             List<CapturePokemon> userPokes = capturedPokeMap.get(userId);
-            int CapPokeId = userPokes.size();
-            CapPokeId++;
-            newCaptured = new CapturePokemon(CapPokeId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
+            int capturedId = userPokes.size();
+            capturedId++;
+            newCaptured = new CapturePokemon(capturedId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
                     capturePokemon.getLevel(), capturePokemon.getCapturedAt());
 
             userPokes.add(newCaptured);
@@ -48,9 +48,9 @@ public class CapturedPokeRepositoryImpl implements CapturedPokeRepository {
 
         } else {
             List<CapturePokemon> userPokes = new ArrayList<>();
-            int CapPokeId = userPokes.size();
-            CapPokeId++;
-            newCaptured = new CapturePokemon(CapPokeId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
+            int capturedId = userPokes.size();
+            capturedId++;
+            newCaptured = new CapturePokemon(capturedId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
                     capturePokemon.getLevel(), capturePokemon.getCapturedAt());
 
             userPokes.add(newCaptured);
@@ -89,11 +89,12 @@ public class CapturedPokeRepositoryImpl implements CapturedPokeRepository {
 
     }
 
+    @Override
     public CapturePokemon getCapturePokeById(int id) {
-
+// cambiar nombre  "is captured and return boolean"
         for (List<CapturePokemon> listaDePokes : capturedPokeMap.values()) {
             for (CapturePokemon CapturePokemon : listaDePokes) {
-                if (CapturePokemon.getCapturedId() == id) {
+                if (CapturePokemon.getPokemonId() == id) {
                     return CapturePokemon;
                 }
             }
