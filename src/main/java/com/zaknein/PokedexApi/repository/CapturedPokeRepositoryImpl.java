@@ -28,8 +28,6 @@ public class CapturedPokeRepositoryImpl implements CapturedPokeRepository {
             
             capturedPokeMap = mapper.readValue(pokeFile, new TypeReference<Map<Integer, List<CapturePokemon>>>() {});
 
-            // capturedPokeMap = mapper.readValue(pokeFile,
-            //         mapper.getTypeFactory().constructMapLikeType(HashMap.class, Integer.class, CapturePokemon.class));
         } else {
             capturedPokeMap = new HashMap<>();
         }

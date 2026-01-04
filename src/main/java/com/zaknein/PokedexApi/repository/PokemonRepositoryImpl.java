@@ -76,15 +76,8 @@ public class PokemonRepositoryImpl implements PokemonRepository {
     @Override
     public void deletePokeById(int id){
         
-        // Pokemon poke = pokemonMap.get(id);
-        // if(capPoke != null){
-        //     throw new PokeUnderUserException("This poke with id " + id + " has been captured by an user and cannot be deleted");
-        // }else if ( poke == null) {
-        //     throw new NoPokeFoundException("There is no pokemon with the id " + id + " try again");
-        // }else{
         pokemonMap.remove(id);
         sync();
-        // }
         
 
     }
