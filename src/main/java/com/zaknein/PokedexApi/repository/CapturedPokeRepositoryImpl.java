@@ -92,16 +92,16 @@ public class CapturedPokeRepositoryImpl implements CapturedPokeRepository {
     }
 
     @Override
-    public CapturePokemon getCapturePokeById(int id) {
-// cambiar nombre  "is captured and return boolean"
+    public boolean isCaptured(int id) {
+        
         for (List<CapturePokemon> listaDePokes : capturedPokeMap.values()) {
             for (CapturePokemon CapturePokemon : listaDePokes) {
                 if (CapturePokemon.getPokemonId() == id) {
-                    return CapturePokemon;
+                    return true;
                 }
             }
         }
-        return null;
+        return false;
 
     }
 

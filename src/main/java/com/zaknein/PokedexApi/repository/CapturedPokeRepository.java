@@ -14,5 +14,5 @@ public interface CapturedPokeRepository {
 
     void freePokeById(int userId, Integer capturedId);
 
-    CapturePokemon getCapturePokeById(int id);
+    boolean isCaptured(int id);
 }
