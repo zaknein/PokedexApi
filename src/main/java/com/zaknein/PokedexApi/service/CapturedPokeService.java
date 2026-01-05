@@ -3,6 +3,7 @@ package com.zaknein.PokedexApi.service;
 import org.springframework.stereotype.Service;
 import com.zaknein.PokedexApi.domain.Pokemon;
 import com.zaknein.PokedexApi.exceptions.NoPokeFoundException;
+import com.zaknein.PokedexApi.exceptions.NoUserFoundException;
 import com.zaknein.PokedexApi.repository.CapturedPokeRepository;
 import com.zaknein.PokedexApi.repository.PokemonRepository;
 import com.zaknein.PokedexApi.domain.CapturePokemon;
@@ -40,6 +41,9 @@ public class CapturedPokeService {
 
     public List<CapturePokemon> getAllOfYourPoke(int userId) {
         List<CapturePokemon> allPokeList = capturedPokeRepository.getAllOfYourPoke(userId);
+        if(allPokeList.isEmpty()){
+            throw new NoUserFoundException("There is no user with the id " +userId+ " try again");
+        }
         return allPokeList;
     }
 
