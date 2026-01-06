@@ -48,17 +48,6 @@ public class PokemonController {
         return pokeService.getThemAll();
     }
 
-    @ExceptionHandler(value = NoPokeFoundException.class)
-    public ErrorResponse notFound(NoPokeFoundException ex) {
-
-        return new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
-    }
-
-    @ExceptionHandler(value = PokeUnderUserException.class)
-    public ErrorResponse badRequest(PokeUnderUserException ex) {
-
-        return new ErrorResponse(HttpStatus.BAD_REQUEST.value(), ex.getMessage());
-    }
 
 
     @GetMapping("/pokemon/{id}")
