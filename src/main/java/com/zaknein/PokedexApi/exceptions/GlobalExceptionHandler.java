@@ -1,14 +1,8 @@
 package com.zaknein.PokedexApi.exceptions;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import com.zaknein.PokedexApi.exceptions.NoPokeFoundException;
-import com.zaknein.PokedexApi.exceptions.PokeUnderUserException;
-import javax.management.RuntimeErrorException;
-import javax.naming.NoPermissionException;
 
 import com.zaknein.PokedexApi.domain.ErrorResponse;
 
