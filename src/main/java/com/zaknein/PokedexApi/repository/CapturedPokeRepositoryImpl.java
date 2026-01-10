@@ -37,29 +37,46 @@ public class CapturedPokeRepositoryImpl implements CapturedPokeRepository {
     public CapturePokemon enterCapturedPoke(int userId, CapturePokemon capturePokemon) {
 
         CapturePokemon newCaptured = null;
-        if (capturedPokeMap.get(userId) != null) {
-            List<CapturePokemon> userPokes = capturedPokeMap.get(userId);
-            int capturedId = userPokes.size();
-            capturedId++;
-            newCaptured = new CapturePokemon(capturedId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
-                    capturePokemon.getLevel(), capturePokemon.getCapturedAt());
 
-            userPokes.add(newCaptured);
 
-            capturedPokeMap.put(userId, userPokes);
+        capturedPokeMap.get(userId);
 
-        } else {
-            List<CapturePokemon> userPokes = new ArrayList<>();
-            int capturedId = userPokes.size();
-            capturedId++;
-            newCaptured = new CapturePokemon(capturedId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
-                    capturePokemon.getLevel(), capturePokemon.getCapturedAt());
 
-            userPokes.add(newCaptured);
+        List<CapturePokemon> userPokes = capturedPokeMap.get(userId);
 
-            capturedPokeMap.put(userId, userPokes);
-
+        if (userPokes == null) {
+            userPokes = new ArrayList<>();
         }
+            // List<CapturePokemon> userPokes = capturedPokeMap.get(userId);
+            // int capturedId = userPokes.size();
+            // capturedId++;
+            // newCaptured = new CapturePokemon(capturedId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
+            //         capturePokemon.getLevel(), capturePokemon.getCapturedAt());
+
+            // userPokes.add(newCaptured);
+
+            // capturedPokeMap.put(userId, userPokes);
+
+        // } else {
+        //     List<CapturePokemon> userPokes = new ArrayList<>();
+        //     int capturedId = userPokes.size();
+        //     capturedId++;
+        //     newCaptured = new CapturePokemon(capturedId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
+        //             capturePokemon.getLevel(), capturePokemon.getCapturedAt());
+
+        //     userPokes.add(newCaptured);
+
+        //     capturedPokeMap.put(userId, userPokes);
+
+        // }
+        int capturedId = userPokes.size();
+        capturedId++;
+        newCaptured = new CapturePokemon(capturedId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
+        capturePokemon.getLevel(), capturePokemon.getCapturedAt());
+
+        userPokes.add(newCaptured);
+
+        capturedPokeMap.put(userId, userPokes);
         sync();
         return newCaptured;
     }
