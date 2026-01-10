@@ -35,13 +35,14 @@ public class PokemonRepositoryImpl implements PokemonRepository {
         }
     }
 
-    private int futurePokeId = 1;
 
 
     @Override
     public Pokemon createPokemon(PokemonCreater pokemonC ){
 
-        int pokemonId = futurePokeId++;
+
+
+        int pokemonId = pokemonMap.size() + 1;
 
         Pokemon newPoke = new Pokemon(pokemonId, pokemonC.getName(), pokemonC.getSpecies(), pokemonC.getHeight(),
          pokemonC.getWeight(), pokemonC.getDescription(), pokemonC.getCreatedAt(), pokemonC.getTypes());
