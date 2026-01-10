@@ -70,7 +70,7 @@ public class PokemonRepositoryImpl implements PokemonRepository {
         if(poke == null){
             throw new NoPokeFoundException("There is no pokemon with the id " + id + " try again");
         }else{
-            return pokemonMap.get(id);
+            return poke;
         }
     }
 
