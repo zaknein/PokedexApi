@@ -55,12 +55,10 @@ public class PokemonRepositoryImpl implements PokemonRepository {
 
     @Override
     public List<Pokemon> getThemAll(){
-        List<Pokemon> poke = new ArrayList(pokemonMap.values());
-        if(poke.isEmpty()){
-            throw new NoPokeFoundException("There is no pokemon to list");
-        }else{
-            return new ArrayList(pokemonMap.values());
-        }
+       return new ArrayList<>(pokemonMap.values());
+    
+           
+       
     }
 
     @Override
