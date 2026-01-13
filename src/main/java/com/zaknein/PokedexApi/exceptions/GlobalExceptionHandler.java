@@ -16,6 +16,13 @@ public class GlobalExceptionHandler{
         return new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
     }
 
+    @ExceptionHandler(value = NoUserFoundException.class)
+    public ErrorResponse notFound(NoUserFoundException ex) {
+
+        return new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
+    }
+
+
     @ExceptionHandler(value = PokeUnderUserException.class)
     public ErrorResponse badRequest(PokeUnderUserException ex) {
 

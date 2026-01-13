@@ -142,7 +142,7 @@ public List<Pokemon> getThemAll(){
 ---
 
 ### **NoUserFoundException no está en GlobalExceptionHandler**
-❌ PENDIENTE
+✅ PENDIENTE
 
 **Ubicación:** [src/main/java/com/zaknein/PokedexApi/exceptions/GlobalExceptionHandler.java](src/main/java/com/zaknein/PokedexApi/exceptions/GlobalExceptionHandler.java)
 
