@@ -14,7 +14,7 @@ Al solucionar cada comentario, cambiar el estado.
 ---
 
 ### **Error de Generación de ID en PokemonRepositoryImpl**
-❌ PENDIENTE
+✅ PENDIENTE
 
 **Ubicación:** [src/main/java/com/zaknein/PokedexApi/repository/PokemonRepositoryImpl.java](src/main/java/com/zaknein/PokedexApi/repository/PokemonRepositoryImpl.java#L37)
 
@@ -29,7 +29,7 @@ private int futurePokeId = 1;
 ---
 
 ### **Validación Redundante de Null en Varias Ubicaciones**
-❌ PENDIENTE
+✅ PENDIENTE
 
 **Ubicación:** [src/main/java/com/zaknein/PokedexApi/repository/PokemonRepositoryImpl.java](src/main/java/com/zaknein/PokedexApi/repository/PokemonRepositoryImpl.java#L60)
 
@@ -44,7 +44,7 @@ if(poke.isEmpty() || poke == null){
 ---
 
 ### **Duplicación de Lógica en enterCapturedPoke**
-❌ PENDIENTE
+✅  PENDIENTE
 
 **Ubicación:** [src/main/java/com/zaknein/PokedexApi/repository/CapturedPokeRepositoryImpl.java](src/main/java/com/zaknein/PokedexApi/repository/CapturedPokeRepositoryImpl.java#L34-L62)
 
@@ -69,7 +69,7 @@ if (capturedPokeMap.get(userId) != null) {
 ---
 
 ### **Retorno Redundante en Métodos de Búsqueda**
-❌ PENDIENTE
+✅  PENDIENTE
 
 **Ubicación:** [src/main/java/com/zaknein/PokedexApi/repository/PokemonRepositoryImpl.java](src/main/java/com/zaknein/PokedexApi/repository/PokemonRepositoryImpl.java#L72-L78)
 
