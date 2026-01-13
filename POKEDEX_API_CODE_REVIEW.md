@@ -157,7 +157,7 @@ public List<Pokemon> getThemAll(){
 ---
 
 ### **Nombre de Variable No Sigue Convenciones Java**
-❌ PENDIENTE
+✅ PENDIENTE
 
 **Ubicación:** [src/main/java/com/zaknein/PokedexApi/controller/UserCaptredPokemonController.java](src/main/java/com/zaknein/PokedexApi/controller/UserCaptredPokemonController.java#L23)
 

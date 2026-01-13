@@ -20,27 +20,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 @CrossOrigin
 public class UserCaptredPokemonController {
 
-    private CapturedPokeService CapPoke;
+    private CapturedPokeService capPoke;
 
     @Autowired
-    public UserCaptredPokemonController(CapturedPokeService CapPoke){
-        this.CapPoke = CapPoke;        
+    public UserCaptredPokemonController(CapturedPokeService capPoke){
+        this.capPoke = capPoke;        
     }
     
     @GetMapping("/users/{userId}/pokemons")
     public List<CapturePokemon>  getCapturedPokemon(@PathVariable int userId) {
-        return CapPoke.getAllOfYourPoke(userId);
+        return capPoke.getAllOfYourPoke(userId);
     }
         
     @PostMapping("/users/{userId}/pokemons")
     public CapturePokemon postCapturedPokemon(@PathVariable int userId, @RequestBody CapturePokemon capturePokemon) {
   
-        return CapPoke.enterCapturedPoke(userId, capturePokemon);
+        return capPoke.enterCapturedPoke(userId, capturePokemon);
     }
     
     @DeleteMapping("/users/{userId}/pokemons/{capturedId}")
     public void deleteCapturedPokemon(@PathVariable int userId, @PathVariable Integer capturedId){
-        CapPoke.freePokeById(userId, capturedId);
+        capPoke.freePokeById(userId, capturedId);
     }
 
 }
