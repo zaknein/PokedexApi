@@ -1,5 +1,6 @@
 package com.zaknein.PokedexApi.repository;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import com.zaknein.PokedexApi.exceptions.NoPokeFoundException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -15,7 +16,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-@Service
+@Repository
 public class CapturedPokeRepositoryImpl implements CapturedPokeRepository {
 
     private static final File pokeFile = new File("capturePokemon.json");
@@ -70,7 +71,7 @@ public class CapturedPokeRepositoryImpl implements CapturedPokeRepository {
 
         // }
         int capturedId = userPokes.size() + 1;
-        
+
         newCaptured = new CapturePokemon(capturedId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
         capturePokemon.getLevel(), capturePokemon.getCapturedAt());
 

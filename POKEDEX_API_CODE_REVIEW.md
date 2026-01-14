@@ -337,7 +337,7 @@ public PokemonService(...) throws IOException {
 ---
 
 ### **Anotación @Service en Clase de Repositorio**
-❌ PENDIENTE
+✅ PENDIENTE
 
 **Ubicación:** [src/main/java/com/zaknein/PokedexApi/repository/PokemonRepositoryImpl.java](src/main/java/com/zaknein/PokedexApi/repository/PokemonRepositoryImpl.java#L21)
 

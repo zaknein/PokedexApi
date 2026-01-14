@@ -1,6 +1,7 @@
 package com.zaknein.PokedexApi.repository;
 
 
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.zaknein.PokedexApi.domain.Pokemon;
@@ -18,7 +19,7 @@ import java.util.Map;
 
 
 
-@Service
+@Repository
 public class PokemonRepositoryImpl implements PokemonRepository {
 
     private static final File pokeFile = new File("pokedex.json");
