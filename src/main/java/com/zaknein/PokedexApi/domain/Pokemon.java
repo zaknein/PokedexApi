@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Pokemon {
 
-    int id;
-    String name;
-    String species;
-    Double height;
-    Double weight;
-    String description;
-    LocalDateTime createdAt;
-    List<String> types;
+    private int id;
+    private String name;
+    private String species;
+    private Double height;
+    private Double weight;
+    private String description;
+    private LocalDateTime createdAt;
+    private List<String> types;
 
     public Pokemon() {
     }

@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 public class CapturePokemon{
-    int capturedId;
-    int pokemonId;
-    String nickname;
-    int level;
-    LocalDateTime capturedAt;
+    private int capturedId;
+    private int pokemonId;
+    private String nickname;
+    private int level;
+    private LocalDateTime capturedAt;
 
 
     public CapturePokemon(){}
