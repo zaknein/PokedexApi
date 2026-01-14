@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @CrossOrigin
-public class UserCaptredPokemonController {
+public class UserCapturedPokemonController {
 
     private CapturedPokeService capPoke;
 
     @Autowired
-    public UserCaptredPokemonController(CapturedPokeService capPoke){
+    public UserCapturedPokemonController(CapturedPokeService capPoke){
         this.capPoke = capPoke;        
     }
     

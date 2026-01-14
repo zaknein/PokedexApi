@@ -172,7 +172,7 @@ private CapturedPokeService CapPoke;
 ---
 
 ### **Errores Tipográficos en el Código**
-❌ PENDIENTE
+✅ PENDIENTE
 
 **Ubicación:** [src/main/java/com/zaknein/PokedexApi/controller/UserCaptredPokemonController.java](src/main/java/com/zaknein/PokedexApi/controller/UserCaptredPokemonController.java)
 
