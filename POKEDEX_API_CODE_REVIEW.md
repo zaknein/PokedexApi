@@ -189,7 +189,7 @@ public class UserCaptredPokemonController {
 ---
 
 ### **Uso de ArrayList en Lugar de List (Interfaz)**
-❌ PENDIENTE
+✅ PENDIENTE
 
 **Ubicación:** [src/main/java/com/zaknein/PokedexApi/domain/Pokemon.java](src/main/java/com/zaknein/PokedexApi/domain/Pokemon.java#L14)
 

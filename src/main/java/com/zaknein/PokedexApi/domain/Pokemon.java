@@ -1,7 +1,7 @@
 package com.zaknein.PokedexApi.domain;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Pokemon {
 
@@ -12,14 +12,14 @@ public class Pokemon {
     Double weight;
     String description;
     LocalDateTime createdAt;
-    ArrayList<String> types;
+    List<String> types;
 
     public Pokemon() {
     }
 
     public Pokemon(int id, String name, String species, Double height, Double weight, String description,
             LocalDateTime createdAt,
-            ArrayList<String> types) {
+            List<String> types) {
         this.id = id;
         this.name = name;
         this.species = species;
@@ -86,11 +86,11 @@ public class Pokemon {
         this.createdAt = createdAt;
     }
 
-    public ArrayList<String> getTypes() {
+    public List<String> getTypes() {
         return types;
     }
 
-    public void setTypes(ArrayList<String> types) {
+    public void setTypes(List<String> types) {
         this.types = types;
     }
 }
