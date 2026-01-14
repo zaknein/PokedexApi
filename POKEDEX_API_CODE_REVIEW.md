@@ -353,7 +353,7 @@ public class PokemonRepositoryImpl implements PokemonRepository {
 ---
 
 ### **Campo message Redundante en Excepciones**
-❌ PENDIENTE
+✅ PENDIENTE
 
 **Ubicación:** [src/main/java/com/zaknein/PokedexApi/exceptions/NoPokeFoundException.java](src/main/java/com/zaknein/PokedexApi/exceptions/NoPokeFoundException.java#L5-L12)
 
