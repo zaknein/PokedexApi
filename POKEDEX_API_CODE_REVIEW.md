@@ -204,7 +204,7 @@ ArrayList<String> types;
 ---
 
 ### **Modificadores de Acceso Inconsistentes**
-❌ PENDIENTE
+✅ PENDIENTE
 
 **Ubicación:** [src/main/java/com/zaknein/PokedexApi/domain/Pokemon.java](src/main/java/com/zaknein/PokedexApi/domain/Pokemon.java#L7-L14)
 
@@ -222,7 +222,7 @@ String species;
 ---
 
 ### **Mensajes de Error en Español en Código en Inglés**
-❌ PENDIENTE
+✅ PENDIENTE
 
 **Ubicación:** [src/main/java/com/zaknein/PokedexApi/repository/PokemonRepositoryImpl.java](src/main/java/com/zaknein/PokedexApi/repository/PokemonRepositoryImpl.java#L113)
 

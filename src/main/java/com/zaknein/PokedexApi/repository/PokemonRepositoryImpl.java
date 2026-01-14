@@ -108,7 +108,7 @@ public class PokemonRepositoryImpl implements PokemonRepository {
         try{
             mapper.writeValue(pokeFile, pokemonMap);
         }catch (IOException e) {
-            System.out.println("No existe archivo");
+            System.out.println("File not found");
             e.printStackTrace();
         }
     }
