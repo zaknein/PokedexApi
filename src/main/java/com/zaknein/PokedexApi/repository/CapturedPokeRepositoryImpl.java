@@ -69,8 +69,8 @@ public class CapturedPokeRepositoryImpl implements CapturedPokeRepository {
         //     capturedPokeMap.put(userId, userPokes);
 
         // }
-        int capturedId = userPokes.size();
-        capturedId++;
+        int capturedId = userPokes.size() + 1;
+        
         newCaptured = new CapturePokemon(capturedId, capturePokemon.getPokemonId(), capturePokemon.getNickname(),
         capturePokemon.getLevel(), capturePokemon.getCapturedAt());
 

@@ -291,7 +291,7 @@ class PokedexApiApplicationTests {
 ---
 
 ### **Asignación Ineficiente de ID**
-❌ PENDIENTE
+✅ PENDIENTE
 
 **Ubicación:** [src/main/java/com/zaknein/PokedexApi/repository/CapturedPokeRepositoryImpl.java](src/main/java/com/zaknein/PokedexApi/repository/CapturedPokeRepositoryImpl.java#L39-L40)
 
