@@ -377,7 +377,7 @@ public String getMessage() {
 ---
 
 ### **Lógica de Validación Duplicada**
-❌ PENDIENTE
+✅ PENDIENTE
 
 **Ubicación:** [src/main/java/com/zaknein/PokedexApi/service/PokemonService.java](src/main/java/com/zaknein/PokedexApi/service/PokemonService.java#L32-L42)
 

@@ -65,12 +65,9 @@ public class PokemonRepositoryImpl implements PokemonRepository {
     @Override
     public Pokemon pokeById(int id){
 
-        Pokemon poke = pokemonMap.get(id);
-        if(poke == null){
-            throw new NoPokeFoundException("There is no pokemon with the id " + id + " try again");
-        }else{
-            return poke;
-        }
+        return pokemonMap.get(id);
+ 
+            
     }
 
     @Override

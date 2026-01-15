@@ -32,11 +32,11 @@ public class PokemonService {
     public List<Pokemon> getThemAll() {
         List<Pokemon> poke = pokemonRepository.getThemAll();
 
-        if (poke.isEmpty() || poke == null) {
+        if (poke.isEmpty() ) {
             throw new NoPokeFoundException("There is no pokemon to list");
-        } else {
-            return poke;
-        }
+        } 
+        return poke;
+        
 
     }
 
@@ -45,9 +45,9 @@ public class PokemonService {
         Pokemon poke = pokemonRepository.pokeById(id);
         if (poke == null) {
             throw new NoPokeFoundException("There is no pokemon with the id " + id + " try again");
-        } else {
-            return poke;
         }
+        return poke;
+      
 
     }
 
