@@ -18,10 +18,12 @@ public class PokemonService {
     private final PokemonRepository pokemonRepository;
     private final CapturedPokeRepository capturedPokeRepository;
 
-    public PokemonService(PokemonRepository pokemonRepository, CapturedPokeRepository capturedPokeRepository ) throws IOException {
+    public PokemonService(PokemonRepository pokemonRepository, CapturedPokeRepository capturedPokeRepository ){
         this.pokemonRepository = pokemonRepository;
         this.capturedPokeRepository = capturedPokeRepository;
+        
     }
+    
 
     public Pokemon createPokemon(PokemonCreater pokemonC) {
 
